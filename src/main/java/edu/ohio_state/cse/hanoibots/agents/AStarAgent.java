@@ -15,7 +15,7 @@ import edu.ohio_state.cse.hanoibots.models.Pair;
  * heuristic to find the optimal solution. The implementation is nearly
  * identical to Uniform Cost Search.
  * 
- * @author hillet
+ * @author Ethan Hill
  * 
  */
 public class AStarAgent implements Agent {

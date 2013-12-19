@@ -4,14 +4,15 @@ package edu.ohio_state.cse.hanoibots.models;
  * 
  * This class provides the structure for nodes to be used in search trees
  * produced by the search algorithms implemented within an agent.
+ * <p>
+ * The structure for a Node is based off of the pseudo-code provided in the
+ * repository for Artificial Intelligence: A Modern Approach, specifically based
+ * on the code found at <a href=
+ * "http://aima-java.googlecode.com/svn/trunk/aima-core/src/main/java/aima/core/
+ * search/framework/Node.java"> here.</a>
+ * </p>
  * 
- * Based off of the code provided in the repository for Artificial Intelligence:
- * A Modern Approach, specifically based on the code found 
- * 
- * http://aima-java.googlecode.com/svn/trunk/aima-core/src/main/java/aima/core/
- * search/framework/Node.java
- * 
- * @author hillet
+ * @author Ethan Hill
  * 
  */
 public class Node implements Comparable {

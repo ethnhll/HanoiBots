@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * This class is intended to provide various utility methods for use with a
+ * {@link edu.ohio_state.cse.hanoibots.models.Node Node}.
  * 
- * @author hillet
+ * @author Ethan Hill
  * 
  */
 public class NodeUtility {
@@ -19,55 +21,44 @@ public class NodeUtility {
 	}
 
 	/**
+	 * This method is intended to calculate a step cost of a "Robot" represented
+	 * as a character.
 	 * 
 	 * @param singleChar
-	 * @return
+	 *            the char that is used to represent a single robot
+	 * @return a step cost of the Robot represented by {@code singleCha}
 	 */
 	private static int singleCharStepCost(char singleChar) {
-		int stepCost = 0;
-		switch (singleChar) {
-		case ('A'): {
-			stepCost = 1;
-			break;
-		}
-		case ('B'): {
-			stepCost = 2;
-			break;
-		}
-		case ('C'): {
-			stepCost = 5;
-			break;
-		}
-		case ('D'): {
-			stepCost = 10;
-			break;
-		}
-		}
-		return stepCost;
+		return Character.getNumericValue(singleChar);
 	}
 
 	/**
+	 * This method is intended to calculate the step cost of "Robots"
+	 * represented as characters. The step cost takes the value of the robot
+	 * with the highest step cost.
 	 * 
 	 * @param leftChar
+	 *            the robot representing
 	 * @param rightChar
 	 * @return
 	 */
 	private static int dualCharStepCost(char leftChar, char rightChar) {
 		int stepCost = 0;
-		if ((leftChar == 'D') || (rightChar == 'D')) {
-			stepCost = 10;
-		} else if ((leftChar == 'C') || (rightChar == 'C')) {
-			stepCost = 5;
+
+		if (Character.valueOf(leftChar) >= Character.valueOf(rightChar)) {
+			stepCost = Character.valueOf(leftChar);
 		} else {
-			// Case when ((leftChar == 'B') || (rightChar == 'B'))
-			stepCost = 2;
+			stepCost = Character.valueOf(rightChar);
 		}
+
 		return stepCost;
 	}
 
+
+
 	/**
 	 * Produces a set of child nodes from a parent node with all possible
-	 * states, actions
+	 * states, and the actions to produce those states.
 	 * 
 	 * @param parent
 	 *            the parent Node that will be expanded to produce a set of
@@ -76,16 +67,50 @@ public class NodeUtility {
 	 */
 	public static Set<Node> expandNodes(Node parent) {
 
-		Set<Node> childNodes = new HashSet<Node>();
-
+		/*
+		 * Retrieve the state representation from the parent (the left and right
+		 * side of the chasm)
+		 */
 		Pair<String, String> parentState = parent.getState();
-
 		String leftSide = parentState.getLeft();
 		String rightSide = parentState.getRight();
+
+		Set<Node> childNodes = new HashSet<Node>();
+		
+		
+		
+		// if left side has p
+			// generate the single robot moves left to right
+			//generate the double robot moves
+		// else
+			// generate the single robot moves right to left
+			// generate the double robot moves
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		if (leftSide.contains("P")) {
 			// Iterate once to get all single combinations
 			String tempLeft = leftSide.replaceAll("P", "");
+			
+			for ()
+			
 
 			// Now iterate to get all dual character combinations
 			for (int i = 0; i < tempLeft.length() - 1; i++) {
@@ -95,14 +120,18 @@ public class NodeUtility {
 
 					// Begin creating the Node
 					int stepCost = dualCharStepCost(leftChar, rightChar);
+
 					String action = "Move " + Character.toString(rightChar)
 							+ Character.toString(leftChar) + 'P' + " right";
+
 					String newLeft = tempLeft.replaceAll("[" + leftChar
 							+ rightChar + "]", "");
+
 					String newRight = rightSide.concat(Character
 							.toString(rightChar)
 							+ Character.toString(leftChar)
 							+ 'P');
+
 					Pair<String, String> newState = new Pair<String, String>(
 							newLeft, newRight);
 					// Create the child Node
@@ -135,10 +164,17 @@ public class NodeUtility {
 	}
 
 	/**
+	 * Allows for recursive expansion of the actions taken to create the Node
+	 * and returns these actions as a List.
 	 * 
 	 * @param actionList
+	 *            the list of actions taken thus far in the progression of a
+	 *            Search {@link edu.ohio_state.cse.hanoibots.agents.Agent Agent}
+	 *            in finding a state node which represents a solution
 	 * @param node
-	 * @return
+	 *            the node whose actions and parent actions taken to produce
+	 *            {@code node} are added to the returned List
+	 * @return a List containing all the actions taken to create {@code node}
 	 */
 	public static List<String> retrieveActions(List<String> actionList,
 			Node node) {

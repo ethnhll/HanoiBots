@@ -8,7 +8,7 @@ package edu.ohio_state.cse.hanoibots.models;
  * tuples">here.</a>
  * </p>
  * 
- * @author EthanHill
+ * @author Ethan Hill
  * 
  * @param <L> the left object in a Pair
  * @param <R> the right object in a Pair
