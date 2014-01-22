@@ -15,7 +15,7 @@ package edu.ohio_state.cse.hanoibots.models;
  * @author Ethan Hill
  * 
  */
-public class Node implements Comparable {
+public class Node implements Comparable<Object> {
 
 	/**
 	 * this instance's parent node
